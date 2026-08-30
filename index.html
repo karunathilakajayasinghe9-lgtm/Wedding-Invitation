@@ -5,18 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Engagement Invitation | Namal & Nimasha</title>
     
-    <meta property="og:title" content="Engagement Invitation | Namal & Nimasha" />
-    <meta property="og:description" content="You are cordially invited to celebrate the Engagement Ceremony of Namal & Nimasha." />
-    <meta property="og:image" content="https://karunathilakajayasinghe9-lgtm.github.io/Wedding-Invitation/preview.jpg" />
-    <meta property="og:url" content="https://karunathilakajayasinghe9-lgtm.github.io/Wedding-Invitation/" />
-    <meta property="og:type" content="website" />
-
+    <!-- Google Fonts for Sri Lankan Elegance -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Cinzel:wght@600;700;800&family=Playfair+Display:ital,wght@0,500;0,600;1,400&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
     
+    <!-- FontAwesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
 
     <script>
@@ -142,12 +139,15 @@
 </head>
 <body class="min-h-screen flex items-center justify-center px-4 py-8 bg-pattern relative">
 
+    <!-- Canvas for Floating Gold Dust Particles -->
     <canvas id="petalCanvas"></canvas>
 
+    <!-- INTRO OVERLAY (ENVELOPE) -->
     <div id="envelopeOverlay" class="envelope-wrapper fixed inset-0 z-50 flex flex-col items-center justify-center p-4 bg-darkbg/95 backdrop-blur-md">
         
         <div class="max-w-sm w-full bg-cardbg border border-gold-400/60 rounded-3xl p-8 text-center gold-border pulse-gold relative overflow-hidden">
             
+            <!-- TRADITIONAL LOTUS EMBLEM -->
             <div class="w-16 h-16 mx-auto mb-4 rounded-full border border-gold-400/60 flex items-center justify-center bg-gradient-to-b from-amber-500/20 to-transparent shadow-lg text-gold-300 text-3xl">
                 🪷
             </div>
@@ -155,6 +155,7 @@
             <p class="font-cinzel text-[11px] text-gold-300 tracking-[0.25em] uppercase mb-2">You Are Cordially Invited</p>
             <p class="text-xs text-amber-100/70 font-serif italic mb-3">To The Engagement Ceremony Of</p>
             
+            <!-- CALLIGRAPHY NAMES -->
             <div class="my-5 space-y-1">
                 <div class="font-script text-6xl sm:text-7xl text-amber-200 tracking-wide">Namal</div>
                 <div class="font-serif italic text-2xl text-gold-400 py-1">&</div>
@@ -168,12 +169,15 @@
         </div>
     </div>
 
+    <!-- MAIN INVITATION CARD -->
     <main id="mainInvitation" class="card-hidden w-full max-w-md bg-cardbg rounded-3xl p-6 sm:p-9 text-center gold-border relative z-10 my-auto">
         
+        <!-- TRADITIONAL LOTUS TOP ICON INSIDE CARD -->
         <div class="text-gold-400 text-3xl mb-1 animate-item">🪷</div>
 
         <p class="text-[10px] font-cinzel text-gold-300 tracking-[0.3em] uppercase mb-2 animate-item">Ayubowan</p>
 
+        <!-- DEAR GUEST TITLE -->
         <h1 class="text-2xl sm:text-3xl font-bold font-cinzel gold-bright-text mb-3 tracking-wide animate-item">
             Dear <span id="guestName">Guest</span>,
         </h1>
@@ -182,12 +186,14 @@
             Together with our families, we joyfully invite you to celebrate our
         </p>
 
+        <!-- EVENT TITLE BADGE -->
         <div class="inline-block border-y border-gold-400/40 py-1.5 px-6 mb-4 animate-item">
             <h3 class="font-cinzel text-xs sm:text-sm text-gold-300 font-bold uppercase tracking-widest">
                 Engagement Ceremony
             </h3>
         </div>
 
+        <!-- ELEGANT CALLIGRAPHY NAMES -->
         <div class="my-3 py-1 animate-item space-y-1">
             <div class="font-script text-6xl sm:text-7xl text-white drop-shadow-md tracking-wide">
                 Namal
@@ -200,6 +206,7 @@
             </div>
         </div>
 
+        <!-- HIGHLIGHTED DATE CARD -->
         <div class="my-5 bg-gradient-to-b from-amber-500/20 via-amber-950/30 to-transparent border border-gold-400/50 rounded-2xl p-4 text-center shadow-lg animate-item">
             <p class="text-[10px] font-cinzel text-gold-300 tracking-widest uppercase mb-1">Save The Date</p>
             <div class="text-lg sm:text-xl font-bold text-white font-cinzel tracking-wide">
@@ -210,30 +217,35 @@
             </p>
         </div>
 
+        <!-- HIGHLIGHTED VENUE CARD -->
         <div class="my-5 bg-gradient-to-b from-amber-500/20 via-amber-950/30 to-transparent border border-gold-400/50 rounded-2xl p-4 text-center shadow-lg animate-item">
             <p class="text-[10px] font-cinzel text-gold-300 tracking-widest uppercase mb-1">Venue</p>
             <div class="text-lg sm:text-xl font-bold text-white font-serif tracking-wide">
                 Vijithapura Temple
             </div>
 
+            <!-- GOOGLE MAPS BUTTON -->
             <a href="https://maps.google.com/?q=Vijithapura+Temple" target="_blank" rel="noopener" class="w-full mt-3 py-2.5 px-4 rounded-xl bg-gold-400/15 border border-gold-400/50 text-gold-300 text-xs font-semibold flex items-center justify-center gap-2 hover:bg-gold-400/30 transition">
                 <i class="fas fa-map-marked-alt text-gold-400"></i> Get Directions (Google Maps)
             </a>
         </div>
 
+        <!-- CLOSING BLESSINGS -->
         <p class="text-xs text-gray-300 font-serif italic mb-6 animate-item">
             We request the presence of your grace and blessings on this auspicious day.
         </p>
 
+        <!-- RSVP CONTACT NUMBERS -->
         <div class="border-t border-gray-800/80 pt-5 mb-4 animate-item">
             <div class="text-[11px] font-bold text-gold-300 uppercase tracking-widest font-sans mb-1">
                 RSVP Calls
             </div>
             <div class="text-sm text-gray-100 font-semibold tracking-wide">
-                077 983 6820  |  076 288 4849
+                077 983 6820 &nbsp;|&nbsp; 076 288 4849
             </div>
         </div>
 
+        <!-- WHATSAPP RSVP BUTTON -->
         <div class="animate-item">
             <button id="whatsappRsvpBtn" class="w-full py-3.5 px-4 rounded-xl bg-emerald-950/80 border border-emerald-500/80 text-emerald-300 text-xs font-semibold flex items-center justify-center gap-2 hover:bg-emerald-900 transition shadow-lg cursor-pointer">
                 <i class="fab fa-whatsapp text-xl text-emerald-400"></i> 
@@ -243,6 +255,7 @@
 
     </main>
 
+    <!-- JAVASCRIPT LOGIC -->
     <script>
         function capitalizeWords(str) {
             return str.replace(/\b\w/g, char => char.toUpperCase());
@@ -273,15 +286,16 @@
             card.classList.add('card-visible');
         }
 
-        // 3. WHATSAPP RSVP CLICK HANDLER
+        // 3. WHATSAPP RSVP CLICK HANDLER (DYNAMICALLY SWITCHES I / WE BASED ON GUEST COUNT)
         document.getElementById('whatsappRsvpBtn').addEventListener('click', function() {
             const guestName = document.getElementById('guestName').innerText;
             const phone = "94788621329"; 
 
-            // Detects 'and', '&', 'with', or ',' in guest name to use 'We', otherwise uses 'I'
-            const isMultiple = /\band\b|&|,|\bwith\b/i.test(guestName);
+            // Detects 'and', '&', or ',' in guest name to use 'We', otherwise uses 'I'
+            const isMultiple = /\band\b|&|,/i.test(guestName);
             const pronoun = isMultiple ? "We" : "I";
 
+            // EXACT MESSAGE ACCORDING TO YOUR SPECIFICATION
             const text = `Thank you for the invitation! ${pronoun} will definitely be joining to celebrate your special day! ✨💐`;
 
             window.open(`https://wa.me/${phone}?text=${encodeURIComponent(text)}`, '_blank');
