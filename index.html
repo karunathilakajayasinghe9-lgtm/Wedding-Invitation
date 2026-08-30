@@ -16,7 +16,7 @@
     <meta property="og:url" content="https://karunathilakajayasinghe9-lgtm.github.io/Wedding-Invitation/" />
     <meta property="og:type" content="website" />
 
-    <!-- Google Fonts for Sri Lankan Elegance -->
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Cinzel:wght@600;700;800&family=Playfair+Display:ital,wght@0,500;0,600;1,400&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -212,23 +212,25 @@
             </div>
         </div>
 
+        <!-- DATE & TIME BOX -->
         <div class="my-5 bg-gradient-to-b from-amber-500/20 via-amber-950/30 to-transparent border border-gold-400/50 rounded-2xl p-4 text-center shadow-lg animate-item">
             <p class="text-[10px] font-cinzel text-gold-300 tracking-widest uppercase mb-1">Save The Date</p>
             <div class="text-lg sm:text-xl font-bold text-white font-cinzel tracking-wide">
                 Thursday, September 17, 2026
             </div>
-            <p class="text-xs text-amber-200/90 font-sans mt-1.5">
-                <i class="far fa-clock mr-1 text-gold-400"></i> Auspicious Time: <strong>9:00 AM Onwards</strong>
+            <p id="venueTime" class="text-xs text-amber-200/90 font-sans mt-1.5">
+                <!-- JavaScript වලින් auto වෙනස් වේ -->
             </p>
         </div>
 
+        <!-- VENUE BOX -->
         <div class="my-5 bg-gradient-to-b from-amber-500/20 via-amber-950/30 to-transparent border border-gold-400/50 rounded-2xl p-4 text-center shadow-lg animate-item">
             <p class="text-[10px] font-cinzel text-gold-300 tracking-widest uppercase mb-1">Venue</p>
-            <div class="text-lg sm:text-xl font-bold text-white font-serif tracking-wide">
-                Vijithapura Temple
+            <div id="venueTitle" class="text-lg sm:text-xl font-bold text-white font-serif tracking-wide">
+                <!-- JavaScript වලින් auto වෙනස් වේ -->
             </div>
 
-            <a href="https://maps.google.com/?q=Vijithapura+Temple" target="_blank" rel="noopener" class="w-full mt-3 py-2.5 px-4 rounded-xl bg-gold-400/15 border border-gold-400/50 text-gold-300 text-xs font-semibold flex items-center justify-center gap-2 hover:bg-gold-400/30 transition">
+            <a id="mapBtn" href="#" target="_blank" rel="noopener" class="w-full mt-3 py-2.5 px-4 rounded-xl bg-gold-400/15 border border-gold-400/50 text-gold-300 text-xs font-semibold flex items-center justify-center gap-2 hover:bg-gold-400/30 transition">
                 <i class="fas fa-map-marked-alt text-gold-400"></i> Get Directions (Google Maps)
             </a>
         </div>
@@ -273,7 +275,31 @@
                 guestNameElement.innerText = 'Guest';
             }
         }
+
+        // VENUE SWITCHING LOGIC
+        function setVenueDetails() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const venueParam = urlParams.get('venue');
+
+            const venueTitle = document.getElementById('venueTitle');
+            const venueTime = document.getElementById('venueTime');
+            const mapBtn = document.getElementById('mapBtn');
+
+            if (venueParam === 'temple') {
+                // පන්සලට එන අයට (venue=temple ලෙස Link එකේ තිබුණොත්)
+                venueTitle.innerText = "Vijithapura Temple";
+                venueTime.innerHTML = '<i class="far fa-clock mr-1 text-gold-400"></i> Auspicious Time: <strong>9:00 AM Onwards</strong>';
+                mapBtn.href = "https://maps.google.com/?q=Vijithapura+Temple";
+            } else {
+                // Hotel එකට එන අයට (සාමාන්‍ය අය)
+                venueTitle.innerText = "Hotel Jayindu, Kunchikulama";
+                venueTime.innerHTML = '<i class="far fa-clock mr-1 text-gold-400"></i> Time: <strong>11:30 AM Onwards</strong>';
+                mapBtn.href = "https://maps.google.com/?q=Hotel+Jayindu+Kunchikulama";
+            }
+        }
+
         setGuestName();
+        setVenueDetails();
 
         function openInvitation() {
             const envelope = document.getElementById('envelopeOverlay');
