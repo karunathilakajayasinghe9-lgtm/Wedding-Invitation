@@ -8,7 +8,7 @@
     <!-- Google Fonts for Sri Lankan Elegance -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800&family=Great+Vibes&family=Playfair+Display:ital,wght@0,500;0,600;1,400&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Cinzel:wght@600;700;800&family=Playfair+Display:ital,wght@0,500;0,600;1,400&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
     
     <!-- FontAwesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
@@ -35,7 +35,7 @@
                     fontFamily: {
                         serif: ['Playfair Display', 'serif'],
                         cinzel: ['Cinzel', 'serif'],
-                        script: ['Great Vibes', 'cursive'],
+                        script: ['Alex Brush', 'cursive'],
                         sans: ['Poppins', 'sans-serif'],
                     }
                 }
@@ -120,7 +120,6 @@
             transition: all 0.6s ease-out;
         }
 
-        /* All items visible when card is opened */
         .card-visible .animate-item {
             opacity: 1;
             transform: translateY(0);
@@ -156,11 +155,11 @@
             <p class="font-cinzel text-[11px] text-gold-300 tracking-[0.25em] uppercase mb-2">You Are Cordially Invited</p>
             <p class="text-xs text-amber-100/70 font-serif italic mb-3">To The Engagement Ceremony Of</p>
             
-            <!-- BEAUTIFUL & SPREAD CALLIGRAPHY NAMES -->
+            <!-- NEW CALLIGRAPHY FONT FOR NAMES -->
             <div class="my-5 space-y-1">
-                <div class="font-script text-5xl sm:text-6xl text-amber-200 tracking-wider">Namal</div>
+                <div class="font-script text-6xl sm:text-7xl text-amber-200 tracking-wide">Namal</div>
                 <div class="font-serif italic text-2xl text-gold-400 py-1">&</div>
-                <div class="font-script text-5xl sm:text-6xl text-amber-200 tracking-wider">Nimasha</div>
+                <div class="font-script text-6xl sm:text-7xl text-amber-200 tracking-wide">Nimasha</div>
             </div>
             
             <button onclick="openInvitation()" class="w-full mt-2 py-3.5 px-6 rounded-xl bg-gradient-to-r from-amber-600 via-amber-400 to-amber-600 text-black font-cinzel font-bold text-xs tracking-widest uppercase hover:scale-105 transition-all duration-300 shadow-xl flex items-center justify-center gap-2">
@@ -194,15 +193,15 @@
             </h3>
         </div>
 
-        <!-- COUPLE NAMES -->
+        <!-- NEW ELEGANT CALLIGRAPHY NAMES -->
         <div class="my-3 py-1 animate-item space-y-1">
-            <div class="font-script text-5xl sm:text-6xl text-white drop-shadow-md tracking-wider">
+            <div class="font-script text-6xl sm:text-7xl text-white drop-shadow-md tracking-wide">
                 Namal
             </div>
             <div class="text-gold-400 text-2xl font-serif italic">
                 &
             </div>
-            <div class="font-script text-5xl sm:text-6xl text-white drop-shadow-md tracking-wider">
+            <div class="font-script text-6xl sm:text-7xl text-white drop-shadow-md tracking-wide">
                 Nimasha
             </div>
         </div>
@@ -218,16 +217,17 @@
             </p>
         </div>
 
-        <!-- CREATIVE HIGHLIGHTED VENUE CARD -->
+        <!-- CREATIVE HIGHLIGHTED & PERFECTLY CENTERED VENUE CARD -->
         <div class="my-5 bg-gradient-to-b from-amber-500/20 via-amber-950/30 to-transparent border border-gold-400/50 rounded-2xl p-4.5 text-center shadow-lg animate-item">
             <p class="text-[10px] font-cinzel text-gold-300 tracking-widest uppercase mb-1">Venue</p>
-            <div class="text-lg sm:text-xl font-bold text-white font-serif tracking-wide flex items-center justify-center gap-2 mb-3">
-                <i class="fas fa-gopuram text-gold-400 text-base"></i>
-                <span>Vijithapura Temple</span>
+            
+            <!-- PERFECTLY CENTERED TEXT WITHOUT ICON -->
+            <div class="text-lg sm:text-xl font-bold text-white font-serif tracking-wide text-center my-2">
+                Vijithapura Temple
             </div>
 
             <!-- GOOGLE MAPS BUTTON -->
-            <a href="https://maps.google.com/?q=Vijithapura+Temple" target="_blank" rel="noopener" class="w-full py-2.5 px-4 rounded-xl bg-gold-400/15 border border-gold-400/50 text-gold-300 text-xs font-semibold flex items-center justify-center gap-2 hover:bg-gold-400/30 transition">
+            <a href="https://maps.google.com/?q=Vijithapura+Temple" target="_blank" rel="noopener" class="w-full mt-3 py-2.5 px-4 rounded-xl bg-gold-400/15 border border-gold-400/50 text-gold-300 text-xs font-semibold flex items-center justify-center gap-2 hover:bg-gold-400/30 transition">
                 <i class="fas fa-map-marked-alt text-gold-400"></i> Get Directions (Google Maps)
             </a>
         </div>
