@@ -5,18 +5,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Engagement Invitation | Namal & Nimasha</title>
     
+    <!-- Open Graph Meta Tags for WhatsApp & Social Media Preview -->
+    <meta property="og:site_name" content="Engagement Invitation" />
     <meta property="og:title" content="Engagement Invitation | Namal & Nimasha" />
     <meta property="og:description" content="You are cordially invited to celebrate the Engagement Ceremony of Namal & Nimasha." />
     <meta property="og:image" content="https://karunathilakajayasinghe9-lgtm.github.io/Wedding-Invitation/preview.png" />
+    <meta property="og:image:type" content="image/png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
     <meta property="og:url" content="https://karunathilakajayasinghe9-lgtm.github.io/Wedding-Invitation/" />
     <meta property="og:type" content="website" />
 
+    <!-- Google Fonts for Sri Lankan Elegance -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Cinzel:wght@600;700;800&family=Playfair+Display:ital,wght@0,500;0,600;1,400&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
     
+    <!-- FontAwesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
 
     <script>
@@ -54,13 +62,11 @@
             overflow-x: hidden;
         }
 
-        /* Ambient Traditional Background Pattern */
         .bg-pattern {
             background-image: radial-gradient(rgba(245, 158, 11, 0.12) 1.5px, transparent 0);
             background-size: 28px 28px;
         }
 
-        /* Gold Gradient Text */
         .gold-bright-text {
             background: linear-gradient(135deg, #FFF7D6 0%, #FDE68A 40%, #EAB308 70%, #D97706 100%);
             -webkit-background-clip: text;
@@ -83,7 +89,6 @@
             z-index: 5;
         }
 
-        /* Envelope Overlay Styles */
         .envelope-wrapper {
             transition: all 0.9s cubic-bezier(0.4, 0, 0.2, 1);
         }
@@ -116,7 +121,6 @@
             animation: pulseGlow 3s infinite;
         }
 
-        /* Entrance Animations Inside Card */
         .animate-item {
             opacity: 0;
             transform: translateY(20px);
@@ -142,8 +146,15 @@
 </head>
 <body class="min-h-screen flex items-center justify-center px-4 py-8 bg-pattern relative">
 
+    <!-- HIDDEN PREVIEW IMAGE FOR WHATSAPP BOT SCRAPING -->
+    <div style="display:none;">
+        <img src="preview.png" alt="Engagement Invitation Preview" />
+    </div>
+
+    <!-- Canvas for Floating Gold Dust Particles -->
     <canvas id="petalCanvas"></canvas>
 
+    <!-- INTRO OVERLAY (ENVELOPE) -->
     <div id="envelopeOverlay" class="envelope-wrapper fixed inset-0 z-50 flex flex-col items-center justify-center p-4 bg-darkbg/95 backdrop-blur-md">
         
         <div class="max-w-sm w-full bg-cardbg border border-gold-400/60 rounded-3xl p-8 text-center gold-border pulse-gold relative overflow-hidden">
@@ -168,6 +179,7 @@
         </div>
     </div>
 
+    <!-- MAIN INVITATION CARD -->
     <main id="mainInvitation" class="card-hidden w-full max-w-md bg-cardbg rounded-3xl p-6 sm:p-9 text-center gold-border relative z-10 my-auto">
         
         <div class="text-gold-400 text-3xl mb-1 animate-item">🪷</div>
@@ -230,7 +242,7 @@
                 RSVP Calls
             </div>
             <div class="text-sm text-gray-100 font-semibold tracking-wide">
-                077 983 6820  |  076 288 4849
+                077 983 6820 &nbsp;|&nbsp; 076 288 4849
             </div>
         </div>
 
@@ -243,12 +255,12 @@
 
     </main>
 
+    <!-- JAVASCRIPT LOGIC -->
     <script>
         function capitalizeWords(str) {
             return str.replace(/\b\w/g, char => char.toUpperCase());
         }
 
-        // 1. EXTRACT GUEST NAME FROM URL (?name=...)
         function setGuestName() {
             const urlParams = new URLSearchParams(window.location.search);
             const nameParam = urlParams.get('name');
@@ -263,7 +275,6 @@
         }
         setGuestName();
 
-        // 2. OPEN ENVELOPE ANIMATION
         function openInvitation() {
             const envelope = document.getElementById('envelopeOverlay');
             const card = document.getElementById('mainInvitation');
@@ -273,12 +284,10 @@
             card.classList.add('card-visible');
         }
 
-        // 3. WHATSAPP RSVP CLICK HANDLER
         document.getElementById('whatsappRsvpBtn').addEventListener('click', function() {
             const guestName = document.getElementById('guestName').innerText;
             const phone = "94788621329"; 
 
-            // Detects 'and', '&', 'with', or ',' in guest name to use 'We', otherwise uses 'I'
             const isMultiple = /\band\b|&|,|\bwith\b/i.test(guestName);
             const pronoun = isMultiple ? "We" : "I";
 
@@ -287,7 +296,6 @@
             window.open(`https://wa.me/${phone}?text=${encodeURIComponent(text)}`, '_blank');
         });
 
-        // 4. ANIMATED GOLD DUST PARTICLES
         const canvas = document.getElementById('petalCanvas');
         const ctx = canvas.getContext('2d');
 
