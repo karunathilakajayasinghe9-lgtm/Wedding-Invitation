@@ -286,14 +286,18 @@
             card.classList.add('card-visible');
         }
 
-        // 3. WHATSAPP RSVP CLICK HANDLER (UPDATED EXACT MESSAGE)
+        // 3. WHATSAPP RSVP CLICK HANDLER (DYNAMICALLY SWITCHES I / WE BASED ON GUEST COUNT)
         document.getElementById('whatsappRsvpBtn').addEventListener('click', function() {
             const guestName = document.getElementById('guestName').innerText;
             const phone = "94788621329"; 
-            
-            // EXACT MESSAGE YOU REQUESTED WITH GUEST NAME INTEGRATION
-            const text = `Thank you for the invitation! (${guestName}) will definitely be joining to celebrate your special day! ✨💐`;
-            
+
+            // Detects 'and', '&', or ',' in guest name to use 'We', otherwise uses 'I'
+            const isMultiple = /\band\b|&|,/i.test(guestName);
+            const pronoun = isMultiple ? "We" : "I";
+
+            // EXACT MESSAGE ACCORDING TO YOUR SPECIFICATION
+            const text = `Thank you for the invitation! ${pronoun} will definitely be joining to celebrate your special day! ✨💐`;
+
             window.open(`https://wa.me/${phone}?text=${encodeURIComponent(text)}`, '_blank');
         });
 
