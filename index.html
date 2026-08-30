@@ -286,13 +286,13 @@
             card.classList.add('card-visible');
         }
 
-        // 3. WHATSAPP RSVP CLICK HANDLER (UPDATED ENGLISH MESSAGE)
+        // 3. WHATSAPP RSVP CLICK HANDLER (UPDATED EXACT MESSAGE)
         document.getElementById('whatsappRsvpBtn').addEventListener('click', function() {
             const guestName = document.getElementById('guestName').innerText;
             const phone = "94788621329"; 
             
-            // NATURAL & ELEGANT ENGLISH REPLY MESSAGE
-            const text = `Thank you for the invitation! I/We will definitely be joining to celebrate the your special day.!`;
+            // EXACT MESSAGE YOU REQUESTED WITH GUEST NAME INTEGRATION
+            const text = `Thank you for the invitation! (${guestName}) will definitely be joining to celebrate your special day! ✨💐`;
             
             window.open(`https://wa.me/${phone}?text=${encodeURIComponent(text)}`, '_blank');
         });
