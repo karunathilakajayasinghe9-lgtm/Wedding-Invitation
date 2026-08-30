@@ -1,1 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wedding Invitation - Namal & Nimasha</title>
+    <style>
+        body {
+            font-family: 'Georgia', serif;
+            background-color: #fcf8f2;
+            color: #4a3b32;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+        }
+        .card {
+            background: #ffffff;
+            padding: 40px 30px;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            max-width: 500px;
+            width: 100%;
+            text-align: center;
+            border: 1px solid #e8dfd8;
+        }
+        .guest-name {
+            font-size: 24px;
+            font-weight: bold;
+            color: #b8860b;
+            margin-bottom: 20px;
+        }
+        .parents {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 15px;
+            line-height: 1.6;
+        }
+        .couple {
+            font-size: 28px;
+            font-weight: bold;
+            color: #2c2c2c;
+            margin: 20px 0;
+        }
+        .details {
+            background-color: #faf6f0;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 25px 0;
+            font-size: 15px;
+            text-align: left;
+            line-height: 1.8;
+        }
+        .rsvp {
+            font-size: 14px;
+            color: #555;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
 
+<div class="card">
+    <div id="guestDisplay" class="guest-name">Dear Guest,</div>
+    
+    <div class="parents">
+        Mr. Karunathilaka & Mrs. Sudharma<br>&<br>Mr. Gamini & Mrs. Achala<br>
+        <p>request the honor of your presence at the sacred marriage ceremony of their beloved children</p>
+    </div>
+
+    <div class="couple">Namal Jayasinghe<br>&<br>Nimasha Rathnayaka</div>
+
+    <div class="details">
+        <strong>📅 Date:</strong> Thursday, September 17, 2026<br>
+        <strong>⏰ Time:</strong> 9:00 AM Onwards<br>
+        <strong>📍 Venue:</strong> Vijithapura Temple
+    </div>
+
+    <p style="font-style: italic; font-size: 14px;">May your blessings and presence grace our auspicious day.</p>
+
+    <div class="rsvp">
+        <strong>RSVP:</strong> 077 98 36 820 | 076 288 48 49
+    </div>
+</div>
+
+<script>
+    const urlParams = new URLSearchParams(window.location.search);
+    const guestName = urlParams.get('name');
+    
+    if (guestName) {
+        document.getElementById('guestDisplay').innerText = "Dear " + guestName + ",";
+    }
+</script>
+
+</body>
+</html>
