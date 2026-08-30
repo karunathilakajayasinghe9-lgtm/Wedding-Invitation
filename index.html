@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Engagement Invitation | Namal  &  Nimasha</title>
+    <title>Engagement Invitation | Namal & Nimasha</title>
     
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800&family=Great+Vibes&family=Playfair+Display:ital,wght@0,600;0,700;1,500&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Cinzel:wght@500;600;700;800&family=Playfair+Display:ital,wght@0,500;0,600;1,400&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
     
     <!-- FontAwesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
@@ -22,20 +22,20 @@
                 extend: {
                     colors: {
                         gold: {
-                            100: '#FFF7D6',
+                            100: '#FFF9E6',
                             300: '#FDE68A',
                             400: '#F59E0B',
                             500: '#D97706',
                             600: '#B45309'
                         },
-                        darkbg: '#090809',
-                        cardbg: '#121013',
-                        detailsbg: '#1a1614'
+                        darkbg: '#080708',
+                        cardbg: '#121014',
+                        detailsbg: '#1b1718'
                     },
                     fontFamily: {
                         serif: ['Playfair Display', 'serif'],
                         cinzel: ['Cinzel', 'serif'],
-                        script: ['Great Vibes', 'cursive'],
+                        script: ['Alex Brush', 'cursive'],
                         sans: ['Poppins', 'sans-serif'],
                     }
                 }
@@ -45,31 +45,29 @@
 
     <style>
         body {
-            background-color: #070607;
+            background-color: #060506;
             color: #ffffff;
             font-family: 'Poppins', sans-serif;
             overflow-x: hidden;
         }
 
-        /* Sri Lankan Gold Motif Pattern Background */
+        /* Ambient Traditional Background Pattern */
         .bg-pattern {
-            background-image: radial-gradient(rgba(217, 119, 6, 0.12) 1.5px, transparent 0);
-            background-size: 24px 24px;
+            background-image: radial-gradient(rgba(245, 158, 11, 0.12) 1.5px, transparent 0);
+            background-size: 28px 28px;
         }
 
+        /* Gold Gradient Text */
         .gold-bright-text {
-            color: #FDE68A;
-            text-shadow: 0 0 10px rgba(253, 230, 138, 0.3);
+            background: linear-gradient(135deg, #FFF7D6 0%, #FDE68A 40%, #EAB308 70%, #D97706 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 15px rgba(245, 158, 11, 0.25);
         }
 
         .gold-border {
-            border: 1px solid rgba(245, 158, 11, 0.4);
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.95), 0 0 20px rgba(217, 119, 6, 0.15);
-        }
-
-        .couple-name {
-            font-family: 'Great Vibes', cursive;
-            line-height: 1.2;
+            border: 1px solid rgba(245, 158, 11, 0.45);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.95), 0 0 25px rgba(217, 119, 6, 0.2);
         }
 
         #petalCanvas {
@@ -82,18 +80,19 @@
             z-index: 5;
         }
 
+        /* Envelope Overlay Styles */
         .envelope-wrapper {
-            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: all 0.9s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         .envelope-open {
-            transform: translateY(-100vh) scale(0.8);
+            transform: translateY(-100vh) scale(0.85);
             opacity: 0;
             pointer-events: none;
         }
 
         .card-hidden {
-            transform: translateY(40px) scale(0.96);
+            transform: translateY(40px) scale(0.95);
             opacity: 0;
             pointer-events: none;
         }
@@ -106,107 +105,132 @@
         }
 
         @keyframes pulseGlow {
-            0%, 100% { box-shadow: 0 0 15px rgba(245, 158, 11, 0.25); }
-            50% { box-shadow: 0 0 30px rgba(245, 158, 11, 0.6); }
+            0%, 100% { box-shadow: 0 0 20px rgba(245, 158, 11, 0.2); }
+            50% { box-shadow: 0 0 35px rgba(245, 158, 11, 0.5); }
         }
 
         .pulse-gold {
-            animation: pulseGlow 2.5s infinite;
+            animation: pulseGlow 3s infinite;
         }
 
-        /* Traditional Divider SVG styling */
-        .trad-divider {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            color: #F59E0B;
-            opacity: 0.8;
-            margin: 15px 0;
+        /* Staggered Entrance Animations Inside Card */
+        .animate-item {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.8s ease-out;
         }
-        .trad-divider::before, .trad-divider::after {
-            content: '';
-            height: 1px;
-            flex: 1;
-            background: linear-gradient(to right, transparent, rgba(245, 158, 11, 0.5), transparent);
-        }
+
+        .card-visible .animate-item:nth-child(1) { transition-delay: 0.3s; opacity: 1; transform: translateY(0); }
+        .card-visible .animate-item:nth-child(2) { transition-delay: 0.45s; opacity: 1; transform: translateY(0); }
+        .card-visible .animate-item:nth-child(3) { transition-delay: 0.6s; opacity: 1; transform: translateY(0); }
+        .card-visible .animate-item:nth-child(4) { transition-delay: 0.75s; opacity: 1; transform: translateY(0); }
+        .card-visible .animate-item:nth-child(5) { transition-delay: 0.9s; opacity: 1; transform: translateY(0); }
+        .card-visible .animate-item:nth-child(6) { transition-delay: 1.05s; opacity: 1; transform: translateY(0); }
+        .card-visible .animate-item:nth-child(7) { transition-delay: 1.2s; opacity: 1; transform: translateY(0); }
     </style>
 </head>
 <body class="min-h-screen flex items-center justify-center px-4 py-8 bg-pattern relative">
 
-    <!-- Canvas for Floating Gold Dust -->
+    <!-- Canvas for Floating Gold Dust Particles -->
     <canvas id="petalCanvas"></canvas>
 
-    <!-- ENVELOPE OVERLAY -->
+    <!-- INTRO ENVELOPE OVERLAY -->
     <div id="envelopeOverlay" class="envelope-wrapper fixed inset-0 z-50 flex flex-col items-center justify-center p-4 bg-darkbg/95 backdrop-blur-md">
-        <div class="max-w-sm w-full bg-cardbg border border-gold-400/50 rounded-2xl p-8 text-center gold-border pulse-gold relative">
+        
+        <div class="max-w-sm w-full bg-cardbg border border-gold-400/60 rounded-3xl p-8 text-center gold-border pulse-gold relative overflow-hidden">
             
-            <!-- Traditional Lotus Icon Header -->
-            <div class="w-16 h-16 mx-auto mb-4 rounded-full border border-gold-400/60 flex items-center justify-center bg-gold-400/10 text-gold-300 text-2xl">
-                ☸
+            <!-- TRADITIONAL PUNKALASA (PUN-KALASA) SVG ICON -->
+            <div class="w-20 h-20 mx-auto mb-5 rounded-full border border-gold-400/50 flex items-center justify-center bg-gradient-to-b from-amber-500/20 to-transparent p-3 shadow-lg">
+                <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-full h-full text-gold-300">
+                    <!-- Coconut Flowers / Leaves -->
+                    <path d="M32 6C32 6 28 14 22 16C28 18 30 24 32 26C34 24 36 18 42 16C36 14 32 6 32 6Z" fill="#FDE68A" />
+                    <path d="M32 12C32 12 24 10 18 6C20 12 24 18 28 22C28 16 32 12 32 12Z" fill="#F59E0B" />
+                    <path d="M32 12C32 12 40 10 46 6C44 12 40 18 36 22C36 16 32 12 32 12Z" fill="#F59E0B" />
+                    <!-- Kalasa Pot -->
+                    <path d="M22 28H42L44 34L48 40C50 46 46 56 32 56C18 56 14 46 16 40L20 34L22 28Z" stroke="#FDE68A" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    <!-- Pot Neck Accent -->
+                    <path d="M20 32H44" stroke="#F59E0B" stroke-width="2"/>
+                    <circle cx="32" cy="43" r="3" fill="#FDE68A"/>
+                </svg>
             </div>
             
-            <p class="font-cinzel text-xs text-gold-300 tracking-widest uppercase mb-1">You Are Cordially Invited</p>
-            <p class="text-xs text-amber-200/80 font-serif italic mb-2">To The Engagement Ceremony Of</p>
-            <h2 class="couple-name text-4xl text-amber-200 mb-5">Namal & Nimasha</h2>
+            <p class="font-cinzel text-[11px] text-gold-300 tracking-[0.25em] uppercase mb-2">You Are Cordially Invited</p>
+            <p class="text-xs text-amber-100/70 font-serif italic mb-4">To The Engagement Ceremony Of</p>
             
-            <button onclick="openInvitation()" class="w-full py-3.5 px-6 rounded-xl bg-gradient-to-r from-amber-600 via-amber-400 to-amber-600 text-black font-bold text-xs tracking-widest uppercase hover:scale-105 transition-all duration-300 shadow-xl">
-                Open Invitation
+            <!-- CREATIVE & ELEGANT NAMES -->
+            <div class="my-4">
+                <div class="font-script text-5xl text-amber-200 tracking-wider">Namal</div>
+                <div class="font-serif italic text-xl text-gold-400 my-1">&</div>
+                <div class="font-script text-5xl text-amber-200 tracking-wider">Nimasha</div>
+            </div>
+            
+            <button onclick="openInvitation()" class="w-full mt-4 py-3.5 px-6 rounded-xl bg-gradient-to-r from-amber-600 via-amber-400 to-amber-600 text-black font-cinzel font-bold text-xs tracking-widest uppercase hover:scale-105 transition-all duration-300 shadow-xl flex items-center justify-center gap-2">
+                <span>Open Invitation</span>
+                <i class="fas fa-envelope-open text-xs"></i>
             </button>
         </div>
     </div>
 
     <!-- MAIN INVITATION CARD -->
-    <main id="mainInvitation" class="card-hidden w-full max-w-md bg-cardbg rounded-2xl p-6 sm:p-8 text-center gold-border relative z-10 my-auto">
+    <main id="mainInvitation" class="card-hidden w-full max-w-md bg-cardbg rounded-3xl p-6 sm:p-9 text-center gold-border relative z-10 my-auto">
         
-        <!-- TRADITIONAL EMBLEM TOP -->
-        <div class="text-gold-400 text-3xl mb-1">🪷</div>
-        <p class="text-[10px] font-cinzel text-gold-300 tracking-[0.3em] uppercase mb-4">Ayubowan</p>
+        <!-- TRADITIONAL PUNKALASA TOP ICON -->
+        <div class="w-12 h-12 mx-auto mb-2 animate-item">
+            <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-full h-full text-gold-300">
+                <path d="M32 6C32 6 28 14 22 16C28 18 30 24 32 26C34 24 36 18 42 16C36 14 32 6 32 6Z" fill="#FDE68A" />
+                <path d="M32 12C32 12 24 10 18 6C20 12 24 18 28 22C28 16 32 12 32 12Z" fill="#F59E0B" />
+                <path d="M32 12C32 12 40 10 46 6C44 12 40 18 36 22C36 16 32 12 32 12Z" fill="#F59E0B" />
+                <path d="M22 28H42L44 34L48 40C50 46 46 56 32 56C18 56 14 46 16 40L20 34L22 28Z" stroke="#FDE68A" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M20 32H44" stroke="#F59E0B" stroke-width="2"/>
+            </svg>
+        </div>
+
+        <p class="text-[10px] font-cinzel text-gold-300 tracking-[0.3em] uppercase mb-3 animate-item">Ayubowan</p>
 
         <!-- DEAR GUEST TITLE -->
-        <h1 class="text-2xl sm:text-3xl font-bold font-cinzel gold-bright-text mb-4 tracking-wide">
+        <h1 class="text-2xl sm:text-3xl font-bold font-cinzel gold-bright-text mb-3 tracking-wide animate-item">
             Dear <span id="guestName">Guest</span>,
         </h1>
 
-        <p class="text-xs sm:text-sm text-gray-300 font-serif italic mb-4 leading-relaxed px-2">
+        <p class="text-xs sm:text-sm text-gray-300 font-serif italic mb-3 leading-relaxed px-2 animate-item">
             Together with our families, we joyfully invite you to celebrate our
         </p>
 
         <!-- EVENT TITLE BADGE -->
-        <div class="inline-block border-y border-gold-400/40 py-1.5 px-6 mb-4">
-            <h3 class="font-cinzel text-sm sm:text-base text-gold-300 font-bold uppercase tracking-widest">
+        <div class="inline-block border-y border-gold-400/40 py-1.5 px-6 mb-4 animate-item">
+            <h3 class="font-cinzel text-xs sm:text-sm text-gold-300 font-bold uppercase tracking-widest">
                 Engagement Ceremony
             </h3>
         </div>
 
-        <!-- BRIDE & GROOM NAMES -->
-        <div class="my-4">
-            <h2 class="couple-name text-5xl sm:text-6xl text-white font-normal drop-shadow-md">
+        <!-- COUPLE NAMES (CLEAN SCRIPT CALLIGRAPHY) -->
+        <div class="my-4 py-2 animate-item">
+            <div class="font-script text-5xl sm:text-6xl text-white drop-shadow-md">
                 Namal
-            </h2>
+            </div>
             
-            <div class="trad-divider">
-                <span>❖</span>
+            <div class="text-gold-400 text-lg font-serif italic my-1">
+                &
             </div>
 
-            <h2 class="couple-name text-5xl sm:text-6xl text-white font-normal drop-shadow-md">
+            <div class="font-script text-5xl sm:text-6xl text-white drop-shadow-md">
                 Nimasha
-            </h2>
+            </div>
         </div>
 
-        <!-- PROMINENT HIGHLIGHTED DATE SECTION -->
-        <div class="my-6 bg-gradient-to-b from-amber-500/15 to-transparent border border-gold-400/50 rounded-xl p-4 text-center">
-            <p class="text-[11px] font-cinzel text-gold-300 tracking-widest uppercase mb-1">Save The Date</p>
-            <div class="text-xl sm:text-2xl font-bold text-white font-serif">
+        <!-- HIGHLIGHTED DATE SECTION -->
+        <div class="my-6 bg-gradient-to-b from-amber-500/15 to-transparent border border-gold-400/50 rounded-2xl p-4 text-center animate-item">
+            <p class="text-[10px] font-cinzel text-gold-300 tracking-widest uppercase mb-1">Save The Date</p>
+            <div class="text-lg sm:text-xl font-bold text-white font-cinzel tracking-wide">
                 Thursday, September 17, 2026
             </div>
-            <p class="text-xs text-amber-200/90 font-sans mt-1">
-                <i class="far sm:fa-clock mr-1 text-gold-400"></i> Auspicious Time: <strong>9:00 AM Onwards</strong>
+            <p class="text-xs text-amber-200/90 font-sans mt-1.5">
+                <i class="far fa-clock mr-1 text-gold-400"></i> Auspicious Time: <strong>9:00 AM Onwards</strong>
             </p>
         </div>
 
         <!-- VENUE DETAILS -->
-        <div class="bg-detailsbg border border-gold-400/30 rounded-xl p-4 mb-6 text-left space-y-3 font-sans shadow-lg">
+        <div class="bg-detailsbg border border-gold-400/30 rounded-2xl p-4 mb-6 text-left space-y-3 font-sans shadow-lg animate-item">
             <div class="flex items-center gap-3">
                 <span class="text-xl text-gold-400"><i class="fas fa-gopuram"></i></span>
                 <p class="text-xs sm:text-sm text-gray-200">
@@ -216,22 +240,23 @@
 
             <!-- GOOGLE MAPS BUTTON -->
             <div class="pt-1">
-                <a href="https://maps.google.com/?q=Vijithapura+Temple" target="_blank" rel="noopener" class="w-full py-2.5 px-4 rounded-lg bg-gold-400/10 border border-gold-400/40 text-gold-300 text-xs font-semibold flex items-center justify-center gap-2 hover:bg-gold-400/20 transition">
+                <a href="https://maps.google.com/?q=Vijithapura+Temple" target="_blank" rel="noopener" class="w-full py-2.5 px-4 rounded-xl bg-gold-400/10 border border-gold-400/40 text-gold-300 text-xs font-semibold flex items-center justify-center gap-2 hover:bg-gold-400/20 transition">
                     <i class="fas fa-map-marked-alt text-gold-400"></i> Get Directions (Google Maps)
                 </a>
             </div>
         </div>
 
         <!-- CLOSING BLESSINGS -->
-        <p class="text-xs text-gray-300 font-serif italic mb-6">
+        <p class="text-xs text-gray-300 font-serif italic mb-6 animate-item">
             We request the presence of your grace and blessings on this auspicious day.
         </p>
 
         <!-- RSVP CONTACTS & WHATSAPP BUTTON -->
-        <div class="border-t border-gray-800 pt-5 space-y-3">
-            <p class="text-[11px] font-bold text-gold-300 uppercase tracking-widest font-sans">
-                RSVP: <span class="text-gray-100 font-medium">077 98 36 820 / 076 288 48 49</span>
-            </p>
+        <div class="border-t border-gray-800/80 pt-5 space-y-3 animate-item">
+            <div class="text-[11px] font-bold text-gold-300 uppercase tracking-widest font-sans">
+                RSVP Calls: <br>
+                <span class="text-gray-100 font-medium">077 983 6820 | 076 288 4849</span>
+            </div>
 
             <button id="whatsappRsvpBtn" class="w-full py-3 rounded-xl bg-emerald-950/60 border border-emerald-500/60 text-emerald-300 text-xs font-semibold flex items-center justify-center gap-2 hover:bg-emerald-900/80 transition shadow-lg">
                 <i class="fab fa-whatsapp text-lg text-emerald-400"></i> Confirm Attendance via WhatsApp
@@ -240,7 +265,7 @@
 
     </main>
 
-    <!-- JAVASCRIPT -->
+    <!-- JAVASCRIPT LOGIC -->
     <script>
         function capitalizeWords(str) {
             return str.replace(/\b\w/g, char => char.toUpperCase());
@@ -271,7 +296,7 @@
             card.classList.add('card-visible');
         }
 
-        // 3. WHATSAPP RSVP CLICK HANDLER
+        // 3. WHATSAPP RSVP CLICK HANDLER (+94 78 862 1329)
         document.getElementById('whatsappRsvpBtn').addEventListener('click', function() {
             const guestName = document.getElementById('guestName').innerText;
             const phone = "94788621329"; 
