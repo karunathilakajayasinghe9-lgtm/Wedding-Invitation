@@ -217,7 +217,7 @@
             </p>
         </div>
 
-        <!-- HIGHLIGHTED VENUE CARD (STRUCTURED LIKE DATE CARD) -->
+        <!-- HIGHLIGHTED VENUE CARD -->
         <div class="my-5 bg-gradient-to-b from-amber-500/20 via-amber-950/30 to-transparent border border-gold-400/50 rounded-2xl p-4 text-center shadow-lg animate-item">
             <p class="text-[10px] font-cinzel text-gold-300 tracking-widest uppercase mb-1">Venue</p>
             <div class="text-lg sm:text-xl font-bold text-white font-serif tracking-wide">
@@ -286,11 +286,14 @@
             card.classList.add('card-visible');
         }
 
-        // 3. WHATSAPP RSVP CLICK HANDLER (+94 78 862 1329)
+        // 3. WHATSAPP RSVP CLICK HANDLER (UPDATED ENGLISH MESSAGE)
         document.getElementById('whatsappRsvpBtn').addEventListener('click', function() {
             const guestName = document.getElementById('guestName').innerText;
             const phone = "94788621329"; 
-            const text = `Ayubowan! I am ${guestName}. I would love to confirm my attendance for the Engagement Ceremony of Namal & Nimasha!`;
+            
+            // NATURAL & ELEGANT ENGLISH REPLY MESSAGE
+            const text = `Thank you for the invitation! ${guestName} will definitely be joining to celebrate the special day of Namal & Nimasha! ✨💐`;
+            
             window.open(`https://wa.me/${phone}?text=${encodeURIComponent(text)}`, '_blank');
         });
 
