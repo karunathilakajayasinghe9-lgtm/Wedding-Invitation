@@ -5,10 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Engagement Invitation | Namal & Nimasha</title>
     
-    <!-- Google Fonts -->
+    <!-- Google Fonts for Sri Lankan Elegance -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Cinzel:wght@500;600;700;800&family=Playfair+Display:ital,wght@0,500;0,600;1,400&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800&family=Great+Vibes&family=Playfair+Display:ital,wght@0,500;0,600;1,400&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
     
     <!-- FontAwesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
@@ -35,7 +35,7 @@
                     fontFamily: {
                         serif: ['Playfair Display', 'serif'],
                         cinzel: ['Cinzel', 'serif'],
-                        script: ['Alex Brush', 'cursive'],
+                        script: ['Great Vibes', 'cursive'],
                         sans: ['Poppins', 'sans-serif'],
                     }
                 }
@@ -113,10 +113,10 @@
             animation: pulseGlow 3s infinite;
         }
 
-        /* Staggered Entrance Animations Inside Card */
+        /* Entrance Animations Inside Card */
         .animate-item {
             opacity: 0;
-            transform: translateY(20px);
+            transform: translateY(25px);
             transition: all 0.8s ease-out;
         }
 
@@ -127,6 +127,8 @@
         .card-visible .animate-item:nth-child(5) { transition-delay: 0.9s; opacity: 1; transform: translateY(0); }
         .card-visible .animate-item:nth-child(6) { transition-delay: 1.05s; opacity: 1; transform: translateY(0); }
         .card-visible .animate-item:nth-child(7) { transition-delay: 1.2s; opacity: 1; transform: translateY(0); }
+        .card-visible .animate-item:nth-child(8) { transition-delay: 1.35s; opacity: 1; transform: translateY(0); }
+        .card-visible .animate-item:nth-child(9) { transition-delay: 1.5s; opacity: 1; transform: translateY(0); }
     </style>
 </head>
 <body class="min-h-screen flex items-center justify-center px-4 py-8 bg-pattern relative">
@@ -134,37 +136,46 @@
     <!-- Canvas for Floating Gold Dust Particles -->
     <canvas id="petalCanvas"></canvas>
 
-    <!-- INTRO ENVELOPE OVERLAY -->
+    <!-- INTRO OVERLAY (ENVELOPE) -->
     <div id="envelopeOverlay" class="envelope-wrapper fixed inset-0 z-50 flex flex-col items-center justify-center p-4 bg-darkbg/95 backdrop-blur-md">
         
         <div class="max-w-sm w-full bg-cardbg border border-gold-400/60 rounded-3xl p-8 text-center gold-border pulse-gold relative overflow-hidden">
             
-            <!-- TRADITIONAL PUNKALASA (PUN-KALASA) SVG ICON -->
-            <div class="w-20 h-20 mx-auto mb-5 rounded-full border border-gold-400/50 flex items-center justify-center bg-gradient-to-b from-amber-500/20 to-transparent p-3 shadow-lg">
-                <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-full h-full text-gold-300">
-                    <!-- Coconut Flowers / Leaves -->
-                    <path d="M32 6C32 6 28 14 22 16C28 18 30 24 32 26C34 24 36 18 42 16C36 14 32 6 32 6Z" fill="#FDE68A" />
-                    <path d="M32 12C32 12 24 10 18 6C20 12 24 18 28 22C28 16 32 12 32 12Z" fill="#F59E0B" />
-                    <path d="M32 12C32 12 40 10 46 6C44 12 40 18 36 22C36 16 32 12 32 12Z" fill="#F59E0B" />
-                    <!-- Kalasa Pot -->
-                    <path d="M22 28H42L44 34L48 40C50 46 46 56 32 56C18 56 14 46 16 40L20 34L22 28Z" stroke="#FDE68A" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
-                    <!-- Pot Neck Accent -->
-                    <path d="M20 32H44" stroke="#F59E0B" stroke-width="2"/>
-                    <circle cx="32" cy="43" r="3" fill="#FDE68A"/>
+            <!-- REAL SRI LANKAN PUNKALASA (PUN-KALASA) SVG GRAPHIC -->
+            <div class="w-24 h-24 mx-auto mb-4 p-2">
+                <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-full h-full drop-shadow-[0_0_12px_rgba(245,158,11,0.5)]">
+                    <!-- Coconut Flowers Top -->
+                    <path d="M50 8 C50 8 44 22 36 24 C44 28 47 36 50 40 C53 36 56 28 64 24 C56 22 50 8 50 8Z" fill="#FDE68A"/>
+                    <path d="M50 16 C50 16 38 12 28 8 C32 18 38 26 44 32 C44 24 50 16 50 16Z" fill="#F59E0B"/>
+                    <path d="M50 16 C50 16 62 12 72 8 C68 18 62 26 56 32 C56 24 50 16 50 16Z" fill="#F59E0B"/>
+                    <!-- Pot Mouth & Ring -->
+                    <ellipse cx="50" cy="42" rx="20" ry="5" fill="#B45309" stroke="#FDE68A" stroke-width="2"/>
+                    <!-- Kalasa Pot Body -->
+                    <path d="M34 44 C26 52 24 68 32 78 C38 85 62 85 68 78 C76 68 74 52 66 44 Z" fill="url(#potGrad)" stroke="#FDE68A" stroke-width="2.5"/>
+                    <!-- Traditional Pot Ornament Details -->
+                    <path d="M30 62 Q50 72 70 62" stroke="#FDE68A" stroke-width="2" fill="none"/>
+                    <circle cx="50" cy="65" r="4" fill="#FDE68A"/>
+                    <defs>
+                        <linearGradient id="potGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" stop-color="#D97706"/>
+                            <stop offset="50%" stop-color="#78350F"/>
+                            <stop offset="100%" stop-color="#141416"/>
+                        </linearGradient>
+                    </defs>
                 </svg>
             </div>
             
             <p class="font-cinzel text-[11px] text-gold-300 tracking-[0.25em] uppercase mb-2">You Are Cordially Invited</p>
-            <p class="text-xs text-amber-100/70 font-serif italic mb-4">To The Engagement Ceremony Of</p>
+            <p class="text-xs text-amber-100/70 font-serif italic mb-3">To The Engagement Ceremony Of</p>
             
-            <!-- CREATIVE & ELEGANT NAMES -->
-            <div class="my-4">
-                <div class="font-script text-5xl text-amber-200 tracking-wider">Namal</div>
-                <div class="font-serif italic text-xl text-gold-400 my-1">&</div>
-                <div class="font-script text-5xl text-amber-200 tracking-wider">Nimasha</div>
+            <!-- BEAUTIFUL & SPREAD CALLIGRAPHY NAMES -->
+            <div class="my-5 space-y-1">
+                <div class="font-script text-5xl sm:text-6xl text-amber-200 tracking-wider">Namal</div>
+                <div class="font-serif italic text-2xl text-gold-400 py-1">&</div>
+                <div class="font-script text-5xl sm:text-6xl text-amber-200 tracking-wider">Nimasha</div>
             </div>
             
-            <button onclick="openInvitation()" class="w-full mt-4 py-3.5 px-6 rounded-xl bg-gradient-to-r from-amber-600 via-amber-400 to-amber-600 text-black font-cinzel font-bold text-xs tracking-widest uppercase hover:scale-105 transition-all duration-300 shadow-xl flex items-center justify-center gap-2">
+            <button onclick="openInvitation()" class="w-full mt-2 py-3.5 px-6 rounded-xl bg-gradient-to-r from-amber-600 via-amber-400 to-amber-600 text-black font-cinzel font-bold text-xs tracking-widest uppercase hover:scale-105 transition-all duration-300 shadow-xl flex items-center justify-center gap-2">
                 <span>Open Invitation</span>
                 <i class="fas fa-envelope-open text-xs"></i>
             </button>
@@ -174,18 +185,18 @@
     <!-- MAIN INVITATION CARD -->
     <main id="mainInvitation" class="card-hidden w-full max-w-md bg-cardbg rounded-3xl p-6 sm:p-9 text-center gold-border relative z-10 my-auto">
         
-        <!-- TRADITIONAL PUNKALASA TOP ICON -->
-        <div class="w-12 h-12 mx-auto mb-2 animate-item">
-            <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-full h-full text-gold-300">
-                <path d="M32 6C32 6 28 14 22 16C28 18 30 24 32 26C34 24 36 18 42 16C36 14 32 6 32 6Z" fill="#FDE68A" />
-                <path d="M32 12C32 12 24 10 18 6C20 12 24 18 28 22C28 16 32 12 32 12Z" fill="#F59E0B" />
-                <path d="M32 12C32 12 40 10 46 6C44 12 40 18 36 22C36 16 32 12 32 12Z" fill="#F59E0B" />
-                <path d="M22 28H42L44 34L48 40C50 46 46 56 32 56C18 56 14 46 16 40L20 34L22 28Z" stroke="#FDE68A" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
-                <path d="M20 32H44" stroke="#F59E0B" stroke-width="2"/>
+        <!-- PUNKALASA TOP GRAPHIC INSIDE CARD -->
+        <div class="w-16 h-16 mx-auto mb-2 animate-item">
+            <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-full h-full drop-shadow-[0_0_8px_rgba(245,158,11,0.4)]">
+                <path d="M50 8 C50 8 44 22 36 24 C44 28 47 36 50 40 C53 36 56 28 64 24 C56 22 50 8 50 8Z" fill="#FDE68A"/>
+                <path d="M50 16 C50 16 38 12 28 8 C32 18 38 26 44 32 C44 24 50 16 50 16Z" fill="#F59E0B"/>
+                <path d="M50 16 C50 16 62 12 72 8 C68 18 62 26 56 32 C56 24 50 16 50 16Z" fill="#F59E0B"/>
+                <ellipse cx="50" cy="42" rx="20" ry="5" fill="#B45309" stroke="#FDE68A" stroke-width="2"/>
+                <path d="M34 44 C26 52 24 68 32 78 C38 85 62 85 68 78 C76 68 74 52 66 44 Z" fill="#D97706" stroke="#FDE68A" stroke-width="2.5"/>
             </svg>
         </div>
 
-        <p class="text-[10px] font-cinzel text-gold-300 tracking-[0.3em] uppercase mb-3 animate-item">Ayubowan</p>
+        <p class="text-[10px] font-cinzel text-gold-300 tracking-[0.3em] uppercase mb-2 animate-item">Ayubowan</p>
 
         <!-- DEAR GUEST TITLE -->
         <h1 class="text-2xl sm:text-3xl font-bold font-cinzel gold-bright-text mb-3 tracking-wide animate-item">
@@ -203,23 +214,21 @@
             </h3>
         </div>
 
-        <!-- COUPLE NAMES (CLEAN SCRIPT CALLIGRAPHY) -->
-        <div class="my-4 py-2 animate-item">
-            <div class="font-script text-5xl sm:text-6xl text-white drop-shadow-md">
+        <!-- COUPLE NAMES (PROPERLY SPACED CALLIGRAPHY) -->
+        <div class="my-3 py-1 animate-item space-y-1">
+            <div class="font-script text-5xl sm:text-6xl text-white drop-shadow-md tracking-wider">
                 Namal
             </div>
-            
-            <div class="text-gold-400 text-lg font-serif italic my-1">
+            <div class="text-gold-400 text-2xl font-serif italic">
                 &
             </div>
-
-            <div class="font-script text-5xl sm:text-6xl text-white drop-shadow-md">
+            <div class="font-script text-5xl sm:text-6xl text-white drop-shadow-md tracking-wider">
                 Nimasha
             </div>
         </div>
 
-        <!-- HIGHLIGHTED DATE SECTION -->
-        <div class="my-6 bg-gradient-to-b from-amber-500/15 to-transparent border border-gold-400/50 rounded-2xl p-4 text-center animate-item">
+        <!-- HIGHLIGHTED DATE CARD -->
+        <div class="my-5 bg-gradient-to-b from-amber-500/20 via-amber-950/30 to-transparent border border-gold-400/50 rounded-2xl p-4 text-center shadow-lg animate-item">
             <p class="text-[10px] font-cinzel text-gold-300 tracking-widest uppercase mb-1">Save The Date</p>
             <div class="text-lg sm:text-xl font-bold text-white font-cinzel tracking-wide">
                 Thursday, September 17, 2026
@@ -229,21 +238,18 @@
             </p>
         </div>
 
-        <!-- VENUE DETAILS -->
-        <div class="bg-detailsbg border border-gold-400/30 rounded-2xl p-4 mb-6 text-left space-y-3 font-sans shadow-lg animate-item">
-            <div class="flex items-center gap-3">
-                <span class="text-xl text-gold-400"><i class="fas fa-gopuram"></i></span>
-                <p class="text-xs sm:text-sm text-gray-200">
-                    <strong class="text-gold-300 font-semibold">Venue:</strong> Vijithapura Temple
-                </p>
+        <!-- CREATIVE HIGHLIGHTED VENUE CARD -->
+        <div class="my-5 bg-gradient-to-b from-amber-500/20 via-amber-950/30 to-transparent border border-gold-400/50 rounded-2xl p-4.5 text-center shadow-lg animate-item">
+            <p class="text-[10px] font-cinzel text-gold-300 tracking-widest uppercase mb-1">Venue</p>
+            <div class="text-lg sm:text-xl font-bold text-white font-serif tracking-wide flex items-center justify-center gap-2 mb-3">
+                <i class="fas fa-gopuram text-gold-400 text-base"></i>
+                <span>Vijithapura Temple</span>
             </div>
 
             <!-- GOOGLE MAPS BUTTON -->
-            <div class="pt-1">
-                <a href="https://maps.google.com/?q=Vijithapura+Temple" target="_blank" rel="noopener" class="w-full py-2.5 px-4 rounded-xl bg-gold-400/10 border border-gold-400/40 text-gold-300 text-xs font-semibold flex items-center justify-center gap-2 hover:bg-gold-400/20 transition">
-                    <i class="fas fa-map-marked-alt text-gold-400"></i> Get Directions (Google Maps)
-                </a>
-            </div>
+            <a href="https://maps.google.com/?q=Vijithapura+Temple" target="_blank" rel="noopener" class="w-full py-2.5 px-4 rounded-xl bg-gold-400/15 border border-gold-400/50 text-gold-300 text-xs font-semibold flex items-center justify-center gap-2 hover:bg-gold-400/30 transition">
+                <i class="fas fa-map-marked-alt text-gold-400"></i> Get Directions (Google Maps)
+            </a>
         </div>
 
         <!-- CLOSING BLESSINGS -->
