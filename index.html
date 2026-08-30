@@ -3,96 +3,301 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Wedding Invitation - Namal & Nimasha</title>
+    <title>Wedding Invitation | Namal & Nimasha</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400;1,600&family=Poppins:wght@300;400;500;600&family=Great+Vibes&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        gold: {
+                            100: '#FFF7D6',
+                            300: '#E6C687',
+                            400: '#D4AF37',
+                            500: '#AA820A',
+                            600: '#8C6A04',
+                        },
+                        darkbg: '#0a0a0c',
+                        cardbg: 'rgba(23, 22, 26, 0.85)',
+                        detailsbg: 'rgba(38, 34, 30, 0.9)'
+                    },
+                    fontFamily: {
+                        serif: ['Playfair Display', 'serif'],
+                        cinzel: ['Cinzel', 'serif'],
+                        sans: ['Poppins', 'sans-serif'],
+                        script: ['Great Vibes', 'cursive']
+                    }
+                }
+            }
+        }
+    </script>
+
     <style>
         body {
-            font-family: 'Georgia', serif;
-            background-color: #fcf8f2;
-            color: #4a3b32;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            margin: 0;
-            padding: 20px;
+            background-color: #070709;
+            color: #e5e5e5;
+            font-family: 'Poppins', sans-serif;
+            overflow-x: hidden;
         }
-        .card {
-            background: #ffffff;
-            padding: 40px 30px;
-            border-radius: 12px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
-            max-width: 500px;
+
+        /* Subtle Luxury Background Pattern */
+        .bg-pattern {
+            background-image: radial-gradient(rgba(212, 175, 55, 0.12) 1px, transparent 0);
+            background-size: 28px 28px;
+        }
+
+        .gold-gradient-text {
+            background: linear-gradient(135deg, #FFF0CA 0%, #D4AF37 50%, #9A7B1C 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .gold-border {
+            border: 1px solid rgba(212, 175, 55, 0.35);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.9), 0 0 20px rgba(212, 175, 55, 0.08);
+        }
+
+        /* Floating Golden Petals Canvas */
+        #petalCanvas {
+            position: fixed;
+            top: 0;
+            left: 0;
             width: 100%;
-            text-align: center;
-            border: 1px solid #e8dfd8;
+            height: 100%;
+            pointer-events: none;
+            z-index: 5;
         }
-        .guest-name {
-            font-size: 24px;
-            font-weight: bold;
-            color: #b8860b;
-            margin-bottom: 20px;
+
+        /* Envelope Styles & Animation */
+        .envelope-wrapper {
+            transition: all 0.8s ease-in-out;
         }
-        .parents {
-            font-size: 14px;
-            color: #666;
-            margin-bottom: 15px;
-            line-height: 1.6;
+
+        .envelope-open {
+            transform: translateY(-100vh) scale(0.8);
+            opacity: 0;
+            pointer-events: none;
         }
-        .couple {
-            font-size: 28px;
-            font-weight: bold;
-            color: #2c2c2c;
-            margin: 20px 0;
+
+        .card-hidden {
+            transform: translateY(50px) scale(0.95);
+            opacity: 0;
+            pointer-events: none;
         }
-        .details {
-            background-color: #faf6f0;
-            padding: 20px;
-            border-radius: 8px;
-            margin: 25px 0;
-            font-size: 15px;
-            text-align: left;
-            line-height: 1.8;
+
+        .card-visible {
+            transform: translateY(0) scale(1);
+            opacity: 1;
+            pointer-events: auto;
+            transition: all 1s cubic-bezier(0.16, 1, 0.3, 1) 0.3s;
         }
-        .rsvp {
-            font-size: 14px;
-            color: #555;
-            margin-top: 20px;
+
+        @keyframes pulseGlow {
+            0%, 100% { box-shadow: 0 0 15px rgba(212, 175, 55, 0.3); }
+            50% { box-shadow: 0 0 30px rgba(212, 175, 55, 0.7); }
+        }
+
+        .pulse-gold {
+            animation: pulseGlow 2.5s infinite;
         }
     </style>
 </head>
-<body>
+<body class="min-h-screen flex items-center justify-center px-4 py-8 bg-pattern relative">
 
-<div class="card">
-    <div id="guestDisplay" class="guest-name">Dear Guest,</div>
-    
-    <div class="parents">
-        Mr. Karunathilaka & Mrs. Sudharma<br>&<br>Mr. Gamini & Mrs. Achala<br>
-        <p>request the honor of your presence at the sacred marriage ceremony of their beloved children</p>
+    <!-- Canvas for Animated Golden Sparkles & Petals -->
+    <canvas id="petalCanvas"></canvas>
+
+    <!-- INTRO ENVELOPE OVERLAY (Creative Unfolding Effect) -->
+    <div id="envelopeOverlay" class="envelope-wrapper fixed inset-0 z-50 flex flex-col items-center justify-center p-4 bg-darkbg/95 backdrop-blur-md">
+        <div class="max-w-sm w-full bg-cardbg border border-gold-400/40 rounded-2xl p-8 text-center gold-border pulse-gold relative">
+            <div class="w-16 h-16 mx-auto mb-4 rounded-full border border-gold-400/40 flex items-center justify-center bg-gold-400/10">
+                <i class="fas fa-envelope-open-text text-2xl text-gold-400"></i>
+            </div>
+            <p class="font-cinzel text-xs text-gold-300 tracking-widest uppercase mb-1">You Are Cordially Invited</p>
+            <h2 class="font-serif text-2xl text-white font-bold mb-4">Wedding Invitation</h2>
+            <p class="text-xs text-gray-400 italic mb-6">Click the button below to open your personalized invitation card.</p>
+            
+            <button onclick="openInvitation()" class="w-full py-3 px-6 rounded-xl bg-gradient-to-r from-gold-500 via-gold-400 to-gold-500 text-darkbg font-bold text-sm tracking-wider uppercase hover:scale-105 transition-all duration-300 shadow-lg">
+                <i class="fas fa-heart text-xs mr-2"></i> Open Invitation
+            </button>
+        </div>
     </div>
 
-    <div class="couple">Namal Jayasinghe<br>&<br>Nimasha Rathnayaka</div>
+    <!-- MAIN INVITATION CARD (Your Original Content Decorated) -->
+    <main id="mainInvitation" class="card-hidden w-full max-w-md bg-cardbg rounded-2xl p-6 sm:p-9 text-center gold-border relative z-10 my-auto">
+        
+        <!-- DEAR GUEST TITLE (DYNAMICALLY UPDATED) -->
+        <h1 class="text-2xl sm:text-3xl font-bold font-serif gold-gradient-text mb-6 tracking-wide">
+            Dear <span id="guestName">Guest</span>,
+        </h1>
 
-    <div class="details">
-        <strong>📅 Date:</strong> Thursday, September 17, 2026<br>
-        <strong>⏰ Time:</strong> 9:00 AM Onwards<br>
-        <strong>📍 Venue:</strong> Vijithapura Temple
-    </div>
+        <!-- PARENTS NAMES -->
+        <div class="space-y-1 text-sm text-gray-300 font-sans leading-relaxed mb-6">
+            <p>Mr. Karunathilaka & Mrs. Sudharma</p>
+            <p class="text-gold-400 font-serif italic text-xs">&</p>
+            <p>Mr. Gamini & Mrs. Achala</p>
+        </div>
 
-    <p style="font-style: italic; font-size: 14px;">May your blessings and presence grace our auspicious day.</p>
+        <p class="text-xs sm:text-sm text-gray-300/80 font-serif italic mb-6 leading-relaxed px-2">
+            request the honor of your presence at the sacred marriage ceremony of their beloved children
+        </p>
 
-    <div class="rsvp">
-        <strong>RSVP:</strong> 077 98 36 820 | 076 288 48 49
-    </div>
-</div>
+        <!-- BRIDE & GROOM NAMES -->
+        <div class="my-6 space-y-2 py-2 border-y border-gold-400/20">
+            <h2 class="text-3xl sm:text-4xl font-bold font-serif text-white tracking-wide">
+                Namal Jayasinghe
+            </h2>
+            <p class="text-2xl font-serif text-gold-400 font-italic">&</p>
+            <h2 class="text-3xl sm:text-4xl font-bold font-serif text-white tracking-wide">
+                Nimasha Rathnayaka
+            </h2>
+        </div>
 
-<script>
-    const urlParams = new URLSearchParams(window.location.search);
-    const guestName = urlParams.get('name');
-    
-    if (guestName) {
-        document.getElementById('guestDisplay').innerText = "Dear " + guestName + ",";
-    }
-</script>
+        <!-- EVENT DETAILS CARD -->
+        <div class="bg-detailsbg border border-gold-400/25 rounded-xl p-5 my-6 text-left space-y-3 font-sans shadow-inner">
+            <div class="flex items-start gap-3">
+                <span class="text-base">📅</span>
+                <p class="text-xs sm:text-sm text-gray-200">
+                    <strong class="text-gold-300 font-semibold">Date:</strong> Thursday, September 17, 2026
+                </p>
+            </div>
+            <div class="flex items-start gap-3">
+                <span class="text-base">⏰</span>
+                <p class="text-xs sm:text-sm text-gray-200">
+                    <strong class="text-gold-300 font-semibold">Time:</strong> 9:00 AM Onwards
+                </p>
+            </div>
+            <div class="flex items-start gap-3">
+                <span class="text-base">📍</span>
+                <p class="text-xs sm:text-sm text-gray-200">
+                    <strong class="text-gold-300 font-semibold">Venue:</strong> Vijithapura Temple
+                </p>
+            </div>
 
+            <!-- GOOGLE MAPS BUTTON -->
+            <div class="pt-2">
+                <a href="https://maps.google.com/?q=Vijithapura+Temple" target="_blank" rel="noopener" class="w-full py-2 px-4 rounded-lg bg-gold-400/10 border border-gold-400/40 text-gold-300 text-xs font-semibold flex items-center justify-center gap-2 hover:bg-gold-400/20 transition">
+                    <i class="fas fa-map-marked-alt text-gold-400"></i> Get Directions (Google Maps)
+                </a>
+            </div>
+        </div>
+
+        <!-- CLOSING BLESSINGS -->
+        <p class="text-xs sm:text-sm text-gray-300/80 font-serif italic mb-6">
+            May your blessings and presence grace our auspicious day.
+        </p>
+
+        <!-- RSVP CONTACTS & WHATSAPP BUTTON -->
+        <div class="border-t border-gray-800 pt-5 space-y-3">
+            <p class="text-xs font-bold text-gold-400 uppercase tracking-widest font-sans">
+                RSVP: <span class="text-gray-300 font-normal">077 98 36 820 | 076 288 48 49</span>
+            </p>
+
+            <button id="whatsappRsvpBtn" class="w-full py-2.5 rounded-xl bg-green-900/40 border border-green-500/40 text-green-300 text-xs font-semibold flex items-center justify-center gap-2 hover:bg-green-800/60 transition">
+                <i class="fab fa-whatsapp text-sm text-green-400"></i> Confirm Attendance via WhatsApp
+            </button>
+        </div>
+
+    </main>
+
+    <!-- JAVASCRIPT LOGIC -->
+    <script>
+        // 1. EXTRACT GUEST NAME FROM URL (?name=...)
+        function setGuestName() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const nameParam = urlParams.get('name');
+            const guestNameElement = document.getElementById('guestName');
+
+            if (nameParam && nameParam.trim() !== '') {
+                const cleanName = decodeURIComponent(nameParam.replace(/\+/g, ' '));
+                guestNameElement.innerText = cleanName;
+            } else {
+                guestNameElement.innerText = 'Guest';
+            }
+        }
+        setGuestName();
+
+        // 2. OPEN ENVELOPE ANIMATION
+        function openInvitation() {
+            const envelope = document.getElementById('envelopeOverlay');
+            const card = document.getElementById('mainInvitation');
+            
+            envelope.classList.add('envelope-open');
+            card.classList.remove('card-hidden');
+            card.classList.add('card-visible');
+        }
+
+        // 3. WHATSAPP RSVP CLICK HANDLER
+        document.getElementById('whatsappRsvpBtn').addEventListener('click', function() {
+            const guestName = document.getElementById('guestName').innerText;
+            const phone = "94779836820"; 
+            const text = `Hi, I am ${guestName}. I would love to confirm my attendance for the wedding of Namal & Nimasha!`;
+            window.open(`https://wa.me/${phone}?text=${encodeURIComponent(text)}`, '_blank');
+        });
+
+        // 4. ANIMATED GOLD DUST & PETALS CANVAS
+        const canvas = document.getElementById('petalCanvas');
+        const ctx = canvas.getContext('2d');
+
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+        window.addEventListener('resize', resizeCanvas);
+        resizeCanvas();
+
+        const particles = [];
+        const particleCount = 30;
+
+        class Particle {
+            constructor() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.size = Math.random() * 2.5 + 1;
+                this.speedY = Math.random() * 0.6 + 0.2;
+                this.speedX = Math.random() * 0.4 - 0.2;
+                this.opacity = Math.random() * 0.6 + 0.2;
+            }
+            update() {
+                this.y -= this.speedY;
+                this.x += this.speedX;
+                if (this.y < 0) {
+                    this.y = canvas.height;
+                    this.x = Math.random() * canvas.width;
+                }
+            }
+            draw() {
+                ctx.fillStyle = `rgba(212, 175, 55, ${this.opacity})`;
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fill();
+            }
+        }
+
+        for (let i = 0; i < particleCount; i++) {
+            particles.push(new Particle());
+        }
+
+        function animate() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            particles.forEach(p => {
+                p.update();
+                p.draw();
+            });
+            requestAnimationFrame(animate);
+        }
+        animate();
+    </script>
 </body>
 </html>
